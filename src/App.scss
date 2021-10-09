@@ -1,0 +1,72 @@
+//defining variables
+$primaryColor: red;
+
+//defining objects like variables
+$colors: (
+  primary: red,
+  primary-light: darken(red, 20%),
+  secondary: blue,
+  accent: pink,
+);
+
+//mixins
+$desktop: 840px;
+
+@mixin desktop {
+  @media (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+// functions with map-get
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@mixin heading-font {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+  background-color: map-get($colors, primary);
+  height: 100vh;
+  .subcontainer {
+    content: " ";
+    margin: auto;
+    width: 50%;
+    height: 10%;
+    background-color: color(primary-light);
+
+    // implementing mixins
+    @include desktop {
+      background-color: black;
+    }
+  }
+}
+
+//extends
+.text-format {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.testOne {
+  color: red;
+  @extend .text-format;
+}
+
+.testTwo {
+  color: blue;
+  @extend .text-format;
+}
+
+.testThree {
+  color: yellow;
+  @extend .text-format;
+}
