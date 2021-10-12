@@ -3,10 +3,10 @@ $primaryColor: red;
 
 //defining objects like variables
 $colors: (
-  primary: red,
-  primary-light: darken(red, 20%),
-  secondary: blue,
-  accent: pink,
+  primary: rgb(223, 223, 223),
+  primary-light: darken(rgb(240, 240, 240), 20%),
+  secondary: rgb(255, 0, 106),
+  accent: rgb(0, 204, 255),
 );
 
 //mixins
@@ -32,15 +32,20 @@ $desktop: 840px;
   text-align: center;
 }
 
+// body {
+//   // max-height: 100vh;
+//   // overflow: hidden;
+// }
+
 .container {
   background-color: map-get($colors, primary);
-  height: 100vh;
+  // height: 100vh;
   .subcontainer {
     content: " ";
     margin: auto;
     width: 50%;
     height: 10%;
-    background-color: color(primary-light);
+    background-color: color(white);
 
     // implementing mixins
     @include desktop {
